@@ -1,0 +1,30 @@
+.button-hint {
+  background: url(../assets/remove-two-wrong-answers.png) no-repeat center;
+  background-size: contain;
+}
+
+.button-skip {
+  background: url(../assets/skip-question.png) no-repeat center;
+  background-size: contain;
+}
+
+.life-line {
+  width: 40%;
+  height: 18%;
+  background: url(../assets/bottom-floater.png) no-repeat center;
+  background-size: contain;
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+  padding: 0 10%;
+}
+
+.life-line > button {
+  margin-bottom: 20px;
+}
+
+.flex-space {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
