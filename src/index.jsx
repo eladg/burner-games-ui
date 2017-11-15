@@ -1,20 +1,24 @@
 import React from 'react';
-import { render } from 'react-dom';
+// import { ReactDOM } from 'react-dom';
+var ReactDOM = require('react-dom');
+
 import { Provider } from 'react-redux';
 
 import store from './redux/store';
 
 import Game from './Components/game';
 
-const userId = new URLSearchParams(window.location.search).get('uid')
+const userId = new URLSearchParams(window.location.search).get('userId')
 
 // render the app root
-render(
-  <Provider store={store}>
-    <div className="layout">
-      <Game userId={userId}/>
-    </div>
-  </Provider>
-  
-  , document.querySelector("#root")
-);
+const layout = () => {
+  return (
+    <Provider store={store}>
+      <div className="layout">
+        <Game userId={userId}/>
+      </div>
+    </Provider>
+  )
+}
+
+ReactDOM.render( layout() , document.querySelector("#root"));

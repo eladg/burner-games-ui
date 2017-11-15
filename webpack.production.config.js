@@ -5,16 +5,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-loaders.push({
-  test: /\.scss$/,
-  loader: ExtractTextPlugin.extract({fallback: 'style-loader', use : 'css-loader?sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader?outputStyle=expanded'}),
-  exclude: ['node_modules']
-});
-
 module.exports = {
   entry: [
     './src/index.jsx',
-    './styles/index.scss'
+    './src/styles/index.scss'
   ],
   output: {
     publicPath: './',		
@@ -29,11 +23,6 @@ module.exports = {
   },
   plugins: [
     new WebpackCleanupPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -48,7 +37,7 @@ module.exports = {
       allChunks: true
     }),
     new HtmlWebpackPlugin({
-      template: './src/template.html',
+      template: './src/index.html',
       files: {
         css: ['style.css'],
         js: ['bundle.js'],

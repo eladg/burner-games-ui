@@ -1,8 +1,11 @@
 module.exports = [
   {
-    test: /\.jsx?$/,
+    test: /\.jsx$/,
     exclude: /(node_modules|bower_components|public\/)/,
-    loader: "babel-loader"
+    loader: "babel-loader",
+    query: {
+      presets: ["env", "react"],
+    }
   },
   {
     test: /\.css$/,

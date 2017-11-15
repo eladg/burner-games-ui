@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-flexbox-grid';
+import config from '../config';
 
 class Categories extends React.Component {
   constructor(props) {
@@ -14,19 +15,10 @@ class Categories extends React.Component {
   }
 
   categoryNameMap(name) {
-    switch(name) {
-      case "leave_no_trace":
-        return "חשל״ש";
-      case "media_rules":
-        return "תקשורת"
-      case "safe_zone":
-        return "גופים והתמצאות באירוע"
-      case "principles":
-        return "עשרת העקרונות"
-      case "survival_guide":
-        return "מדריך הישרדות"
-      default:
-        throw new error("unknown category name");
+    if ( 'categories_name_map' in config && name in config.categories_name_map ) {
+      return config.categories_name_map[name];
+    } else {
+      throw new Error("unknown category name: " + name);
     }
   }
 
