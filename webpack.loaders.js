@@ -1,6 +1,6 @@
 module.exports = [
   {
-    test: /\.jsx$/,
+    test: /\.js(x*)$/,
     exclude: /(node_modules|bower_components|public\/)/,
     loader: "babel-loader",
     query: {
@@ -8,10 +8,10 @@ module.exports = [
     }
   },
   {
-    test: /\.css$/,
-    loaders: ['style-loader', 'css-loader?importLoaders=1'],
+    test:/\.(s*)css$/,
+    loaders:['style-loader','css-loader', 'sass-loader'],
     exclude: ['node_modules']
-  },
+  },  
   {
     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
     exclude: /(node_modules|bower_components)/,

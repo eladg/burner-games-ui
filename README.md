@@ -1,97 +1,69 @@
-# react-webpack-babel
-Simple React Webpack Babel Starter Kit
+# The Burner Games User Interface
+> This is the frontend application of https://games.midburn.org. The backend application repo can be found at https://github.com/midburn/burner-games
 
-Tired of complicated starters with 200MB of dependencies which are hard to understand and modify?
+Burner games is a simple trivia game developed by the midburn.org organization volunteers as an educational step for the [Midburn organization](http://midburn.org) ticketing system. While playing the game, the participants will be questioned about [Midburn 10 principeles](http://midburn.org/en-ten-principles/) which are the primary guidance of the Midburn Organization.
 
-Try this is a simple [React](https://facebook.github.io/react/), [Webpack](http://webpack.github.io/) and [Babel](https://babeljs.io/) application with nothing else in it.
+Our goal is to educate all Midburn events participants about the 10 principles, the events' vibe and explain the participants' behavior in a simple, fun & humoristic way.
 
 ### What's in it?
 
 * Simple src/index.jsx and src/index.css (local module css).
+
 * Webpack configuration for development (with hot reloading) and production (with minification).
 * CSS module loading, so you can include your css by ```import styles from './path/to.css';```.
 * Both js(x) and css hot loaded during development.
 * [Webpack Dashboard Plugin](https://github.com/FormidableLabs/webpack-dashboard) on dev server.
 
-### To run
+## Development Guidance (for all levels)
 
-* You'll need to have [git](https://git-scm.com/) and [node](https://nodejs.org/en/) installed in your system.
-* Fork and clone the project:
+1. Clone the repository and `cd` into the repo folder.
 
-```
-git clone https://github.com/alicoding/react-webpack-babel.git
-```
-
-* Then install the dependencies:
-
-```
-npm install
+2. Install Dependencies (using [yarn](https://yarnpkg.com/en/docs/install) or [NPM](https://www.npmjs.com/))
+```bash
+$ yarn install
 ```
 
-* Run development server:
+I personally prefer and recommand yarn. Regardless of the tool, please keep the `yarn.lock` / `package-lock.json` files in the repo root, syncronized and up to date.
+
+Also, make sure `webpack` & `http-server` are installed on your computer. Run:
 
 ```
-npm start
-```
+$ webpack -v
+3.11.0
 
-* Or you can run development server with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard):
+$ http-server -h
+usage: http-server [path] [options]
 
-```
-npm run dev
-```
-
-Open the web browser to `http://localhost:8888/`
-
-### To build the production package
+options:
+...
 
 ```
-npm run build
+
+To install `webpack` or `http-server` on the global level (i.e. so you can execute them from shell), run `yarn global add http-server` or `yarn global add webpack`.
+
+3. Build codebase using webpack
+
+The following command will build the whole project into a 'releaseable' version inside the `public/` folder. 
+
+```bash
+$ webpack --config webpack.config.js --progress --profile --colors
 ```
 
-### Nginx Config
+You may take these files and deploy them to a server or static hosting service (such as s3). For local development, I recommand running `webpack --config webpack.config.js -w --progress --profile --colors` (notice the additional `-w`) for `webpack` to listen to changes you make on the files and recompiles the projects automatically.
 
-Here is an example Nginx config:
-```
-server {
-	# ... root and other options
+4. Host the compiled files using `http-server` (development) or static hosting (production).
 
-	gzip on;
-	gzip_http_version 1.1;
-	gzip_types text/plain text/css text/xml application/javascript image/svg+xml;
+On a different terminal tab, execute the following:
 
-	location / {
-		try_files $uri $uri/ /index.html;
-	}
-
-	location ~ \.html?$ {
-		expires 1d;
-	}
-
-	location ~ \.(svg|ttf|js|css|svgz|eot|otf|woff|jpg|jpeg|gif|png|ico)$ {
-		access_log off;
-		log_not_found off;
-		expires max;
-	}
-}
+```bash
+burner-games-ui$ cd public/
+burner-games-ui/public$ http-server -p 8080 --cors .
 ```
 
-### Eslint
-There is a .eslint.yaml config for eslint ready with React plugin.
-To use it, you need to install additional dependencies though:
+Then open your browser: [http://localhost:8080/?userId=888](http://localhost:8001/?userId=888). The `userId` param is the user's profile user id on Drupal/Spark Midburn's systems.
 
-```
-npm install --save-dev eslint eslint-plugin-react
-```
+## Contributing Guidance
 
-To do the actual linting, run:
+### LICENSE
 
-```
-npm run lint
-```
-
-### Notes on importing css styles
-* styles having /src/ in their absolute path are considered part of the application and exported as local css modules.
-* other styles are considered global styles used by many components and are included in the css bundle directly.
-
-### Contribute
-Please contribute to the project if you know how to make it better, including this README :)
+See [LICENSE file included in this repository](https://github.com/Midburn/burner-games/blob/master/LICENSE) (GPL).
