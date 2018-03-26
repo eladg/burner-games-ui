@@ -1,18 +1,18 @@
 body {
-  background: black;
-  min-height: 100vh;
+  background-color: rgb(231, 205, 57);
   overflow: hidden;
   color: white;
 }
-
+.main-container{
+  transition: 1s ease-in-out;
+  display: flex;
+  flex-flow: column;
+}
+.container{
+  padding: 0 2%;
+}
 ul, ol {
   margin: 0;
-}
-
-.layout {
-  margin: 0;
-  height: 100%;
-  width: 100%;
 }
 
 .left-to-right {
@@ -28,14 +28,25 @@ ul, ol {
   height: 100%;
 }
 
+.header{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top:20px;
+  justify-content: space-between;
+
+}
+
+.logo{
+  width: 10%;
+  height: 10%;
+}
+
+.layout {
+  align-self: center;
+}
 .quiz-zone {
-  margin: 0;
-  padding: 15px 50px 70px;
-  background: url(../../assets/bg2.png);
-  background-size: cover;
-  border: 0;
+  max-width: 700px;
   opacity: 0.98;
-  line-height: 2.3vw;
 }
 
 .sixteen-nine {
@@ -56,3 +67,5 @@ ul, ol {
   right: 0;
   bottom: 0;
 }
+
+

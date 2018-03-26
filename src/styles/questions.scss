@@ -1,9 +1,9 @@
 ul.options>li {
-    font-size: 1.5vw;
+    cursor: pointer;
+    padding: 8px 10px;
     color: #ffffff;
     border-radius: 10.7px;
     background-color: #000;
-    cursor: pointer;
     text-align: right;
     margin-bottom: 1%;
     margin-top: 2%;
@@ -18,9 +18,12 @@ ul.options>li {
     padding-right: 0;
 }
 
+.answer-option-label{
+    cursor: pointer;
+    font-weight: 400;
+}
+
 .question {
-    font-size: 2.2vw;
-    line-height: 4vw;
     margin: 2% 0;
     font-family: Assistant-Regular;
     color: #faffff;
@@ -29,3 +32,11 @@ ul.options>li {
 .list-no-bullets {
     list-style: none;
 }
+
+ul.options>li:hover {
+    background-color: rgba(0, 255, 170, 0.541);
+    color:black;
+}
+// .answer-option-label:hover{
+//     color: black;
+// }

@@ -15,7 +15,7 @@ const layout = () => {
   return (
     <Provider store={store}>
       <div className="layout">
-        <Game userId={userId}/>
+        <Game userId='888' />
       </div>
     </Provider>
   )

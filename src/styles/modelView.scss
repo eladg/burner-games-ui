@@ -20,6 +20,7 @@ button:focus {
 }
 
 .startBtn {
+  cursor: pointer;
   display: block;
   width: 140px;
   height: 40px;
@@ -36,13 +37,16 @@ button:focus {
 
 .desc {
     font-family: Assistant-Regular;
-    font-size: 1.7vw;
     color: #ffffff;
-    margin-left: 5%;
-    margin-right: 5%;
+    font-size: 20px;
 }
 
 .anim-fadeIn {
+    background-color: rgba(0, 0, 0, 0.514);
+    text-align: center;
+    padding:5px 10px;
+    border-radius: 10px;
+    margin-top:20px;
     -moz-animation-name: fadeIn;
     -webkit-animation-name: fadeIn;
     -ms-animation-name: fadeIn;
@@ -94,7 +98,7 @@ button:focus {
     }
 }
 
-@-keyframes fadeIn {
+@-ms-keyframes fadeIn {
     0% {
         opacity: 0;
         visibility: hidden;
@@ -138,7 +142,7 @@ button:focus {
     }
 }
 
-@-keyframes fadeOut {
+@-ms-keyframes fadeOut {
     0% {
         opacity: 1;
         visibility: visible;
