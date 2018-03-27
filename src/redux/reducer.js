@@ -22,6 +22,13 @@ export default function reducer(state = initState, action) {
   const payload = action.payload;
   switch (action.type) {
     case UPDATE_GAME:
+      // return {
+      //   ...state,
+      //   game: {
+      //     ...state.game,
+      //     ...payload.game,
+      //   }
+      // }
       return Object.assign({}, state, { game: payload.game });
     case UPDATE_QUESTIONS:
       return Object.assign({}, state, { questions: payload.questions });
