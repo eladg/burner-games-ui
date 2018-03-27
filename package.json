@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js --progress --profile --colors",
     "build:watch": "webpack --config webpack.config.js -w --progress --profile --colors",
-    "build:release": "webpack --config webpack.production.config.js --progress --profile --colors"
+    "build:release": "webpack --config webpack.production.config.js --progress --profile --colors",
+    "start:dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

@@ -52,6 +52,15 @@ class Game extends React.Component {
     this.setCurrentQuestion();
   }
 
+  promoteQuestion(catIndex){
+    this.setState({
+      questionIndex: +1,
+      categoryIndex: catIndex, 
+    })
+    this.setCurrentQuestion();
+  }
+
+
   hintButtonClicked() {
     console.log("hintButtonClicked");
   }
@@ -70,53 +79,47 @@ class Game extends React.Component {
 
   _welcomeView() {
     return(
-      <Row center="xs" style={{display: "table"}}>
-        <div style={{height: "800px", display: "table-cell", "verticalAlign": "middle" }}>
-          <div className="anim-fadeIn" style={{margin: "0 auto", borderRadius: "9px", backgroundColor: "rgba(45, 95, 136, 0.76)"}}>
-            <div>
-              <h1>משחקי הברן</h1>
-              <p className="desc">ברוכים הבאים למשחק הטריוויה החדש שיתן מענה לשאלה שמעסיקה את כולם: האם אתם ברנרים אמיתיים? איך מנצחים? פשוט:עליכם לעבור 5 נושאים שקשורים למידברן, ובכל אחד לענות נכון על 2 שאלות רצופות תוכלו להשתמש בשני גלגלי הצלה בכל נושא. בהצלחה!</p>
-              <button className="startBtn" onClick={this.startButtonClicked}></button>
-            </div>
+      <div>
+        <img className="logo" src="/assets/midburn_logo2.png" alt="" srcset=""/>
+        <div className="anim-fadeIn">
+          <div>
+            <h1>משחקי הברן</h1>
+            <p className="desc">ברוכים הבאים למשחק הטריוויה החדש שיתן מענה לשאלה שמעסיקה את כולם: האם אתם ברנרים אמיתיים? איך מנצחים? פשוט:עליכם לעבור 5 נושאים שקשורים למידברן, ובכל אחד לענות נכון על 2 שאלות רצופות תוכלו להשתמש בשני גלגלי הצלה בכל נושא. בהצלחה!</p>
+            <button className="startBtn" onClick={this.startButtonClicked}></button>
           </div>
         </div>
-      </Row>
+      </div>
     );
   }
 
   _gameView() {
     return (
-      <div className="sixteen-nine">
-        <div className="content">
-
-          <div className="header">
-            <div className="links inline">
-              <a href="https://www.facebook.com/midburns/" target="_blank">
-                <img src="http://games.midburn.org/assets/facebook.png" style={{ height: "30px" }}/>
-              </a>
-              <a href="http://midburn.org/he-survival-guide/" target="_blank">
-                <img src="http://games.midburn.org/assets/guid.png" style={{ height: "22px" }}/>
-              </a>
-            </div>
+      <div className="main-container">
+        <div className="header">
+          <img className="logo" src="/assets/midburn_logo2.png" alt="" srcset=""/>
+          <div className="links">
+            <a href="https://www.facebook.com/midburns/" target="_blank">
+              <img src="http://games.midburn.org/assets/facebook.png" style={{ height: "30px" }}/>
+            </a>
+            <a href="http://midburn.org/he-survival-guide/" target="_blank">
+              <img src="http://games.midburn.org/assets/guid.png" style={{ height: "22px" }}/>
+            </a>
           </div>
-          
-          <Row className="layout">
-            <Col xs={9}>
-              <div className="quiz-zone">
-                <Question/>
-              </div>
-            </Col>
+        </div>
 
-            <Col xs={3} className="categories-">
-              <Categories categories={this.props.categories}/>
-            </Col>
-          
-          </Row>
-          
-          <div className="life-line flex-space">
-            <button className="button-hint btn-sm" onClick={this.hintButtonClicked} ></button>
-            <button className="button-skip btn-sm" onClick={this.skipQuestionClicked} ></button>
+        <div className="layout">
+          <div className="quiz-zone">
+            <Question/>
           </div>
+        </div>
+        
+        <div className="life-line">
+          <button className="button-hint btn-sm" onClick={this.hintButtonClicked} ></button>
+          <button className="button-skip btn-sm" onClick={this.skipQuestionClicked} ></button>
+        </div>
+
+        <div className="categories">
+          <Categories categories={this.props.categories}/>
         </div>
       </div>
     );

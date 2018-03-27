@@ -1,16 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { 
+  fetchGame, 
+  updateCurrentQuestion,
+  checkAnswer,
+} from "../redux/reducer";
 
 class Question extends React.Component {
   constructor(props) {
     super(props);
-
     this.checkAnswer = this.checkAnswer.bind(this);
   }
 
-  checkAnswer(e) {
-    console.log(e)
+  checkAnswer(i, event) {
+    let answer = {question_id:this.props.question.id,answer_ids:[i.toString()]}
+    let answerJson = JSON.stringify(answer)
+    let id = this.props.dispatch(checkAnswer(answerJson))
+    
+    console.log(mapStateToProps(this.props.question)); 
   }
+
+
 
   _isDrawReady() {
     return (this.props.question != undefined)
@@ -22,9 +32,9 @@ class Question extends React.Component {
     }
 
     const answerItems = this.props.question.answers.map((answer, index) =>
-        <li onClick={this.checkAnswer} key={ answer.id }>
+        <li onClick={this.checkAnswer.bind(this, answer.id)} key={ answer.id }>
           <label className="answer-option-label">
-            <input type="radio" name="answer" value="{ answer.id }" style={{display: "none"}}/> {index+1}. {answer.body}
+            <input type="radio" name="answer" value={answer.id} style={{display: "none"}}/> {index+1}. {answer.body}
           </label>
         </li>
     );
